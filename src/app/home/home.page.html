@@ -15,7 +15,7 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
-    <form #myForm="ngForm">
+    <form>
       <ion-item>
         <ion-label>Select a date from future</ion-label>
         <ion-input
@@ -34,6 +34,7 @@
         *ngIf="showDatetimePicker"
         [min]="minDate"
         [max]="maxDate"
+        presentation="date"
         (ionChange)="onChange($event)"
         (ionCancel)="onCancel()"
         [showDefaultButtons]="true"
@@ -42,15 +43,14 @@
         [disabled]="!selectedDate"
         type="submit"
         (click)="onSubmit()"
-        expand="block"
-        >Submit</ion-button
+        expand="block">Submit</ion-button
       >
     </form>
     <div *ngIf="resultList.length">
       <ion-list>
         <ion-item *ngFor="let item of resultList">
           <ion-label>{{ item.label }}</ion-label>
-          <ion-text>{{item.date}}</ion-text>
+          <ion-text>{{ item.date }}</ion-text>
         </ion-item>
       </ion-list>
     </div>

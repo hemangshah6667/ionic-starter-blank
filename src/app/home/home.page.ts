@@ -17,9 +17,8 @@ export class HomePage {
   public resultList: any = [];
 
   constructor() {
-    const currentDate = new Date().toISOString();
     this.selectedDate = '';
-    this.minDate = currentDate;
+    this.minDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
     const maxDate = new Date();
     maxDate.setFullYear(maxDate.getFullYear() + 5);
     this.maxDate = maxDate.toISOString();
