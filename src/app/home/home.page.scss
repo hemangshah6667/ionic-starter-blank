@@ -1,3 +1,6 @@
+h1 {
+  font-weight: 600;
+}
 #container {
   text-align: center;
 
@@ -24,4 +27,18 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-list {
+  border: 5px solid red;
+  ion-item {
+    color: blue;
+
+    ion-label {
+      font-weight: bold;
+    }
+    ion-text {
+      font-style: italic;
+    }
+  }
 }

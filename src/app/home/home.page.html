@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <h1>Sample App with ion- datetime component</h1>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,50 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">
+        <h1>Sample App with ion- datetime component</h1>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <form #myForm="ngForm">
+      <ion-item>
+        <ion-label>Select a date from future</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="selectedDate"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Select Date"
+          (click)="onClick()"
+          required
+          readonly
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-datetime
+        *ngIf="showDatetimePicker"
+        [min]="minDate"
+        [max]="maxDate"
+        (ionChange)="onChange($event)"
+        (ionCancel)="onCancel()"
+        [showDefaultButtons]="true"
+      ></ion-datetime>
+      <ion-button
+        [disabled]="!selectedDate"
+        type="submit"
+        (click)="onSubmit()"
+        expand="block"
+        >Submit</ion-button
+      >
+    </form>
+    <div *ngIf="resultList.length">
+      <ion-list>
+        <ion-item *ngFor="let item of resultList">
+          <ion-label>{{ item.label }}</ion-label>
+          <ion-text>{{item.date}}</ion-text>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
 </ion-content>
